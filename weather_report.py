@@ -19,11 +19,12 @@ DHT_PIN  = 4
 # Setup parameter to connect Netpie Cloud
 APP = 'DomeTempStations'
 TOPIC = 'temp'
-URL = 'https://api.netpie.io/topic/{0}/{1}'.format(APP,TOPIC)
+ALIAS = 'Dome'
+URL = 'https://api.netpie.io/topic/{0}/{1}/{2}'.format(APP,TOPIC,ALIAS)
 
 KEY = 'NtkXjByk5bQZJLs'
 SECRET = 'd76t0i3DdU6z2hbtEm4jcsFJ0'
-ALIAS = 'Dome'
+
 
 # How long to wait (in seconds) between measurements.
 FREQUENCY_SECONDS      = 5
@@ -56,5 +57,5 @@ while True:
         continue
 
     # Wait xx seconds before continuing
-     time.sleep(FREQUENCY_SECONDS)
+    time.sleep(FREQUENCY_SECONDS)
 
