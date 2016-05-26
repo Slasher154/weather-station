@@ -282,7 +282,7 @@
             let gear = gearname[gearname.length-1]; // Extract device name from the topic
             // Check if this device is already in our connected devices, if not, push it into connected devices array
             if(!(_.contains(connectedGears, gear))){
-                insertNotification('Connected to ' + gear, moment().format('hh::mm:ss a'), 'connected')
+                insertNotification('Connected to ' + gear, moment().format('HH::mm:ss'), 'connected')
                 connectedGears.push(gear);
                 // Update number on the blue panel
                 $('.devices-no').html(connectedGears.length);
@@ -292,7 +292,7 @@
 
             // Create a templog object and push into graph data array
             var templog = {};
-            templog['timestamp'] = moment().format('YYYY-MM-DD hh:mm:ss');
+            templog['timestamp'] = moment().format('YYYY-MM-DD HH:mm:ss');
             templog[gear] = parseFloat(msg);
             templogs.push(templog);
 
@@ -300,13 +300,13 @@
             graph.setData(templogs);
 
             var reportMessage = gear + ' has reported a temperature of ' + msg;
-            insertNotification(reportMessage, moment().format('hh:mm:ss a'), '');
+            insertNotification(reportMessage, moment().format('HH:mm:ss'), '');
         });
 
         microgear.on('connected', function() {
             microgear.setAlias('htmlgear');    /* alias can be renamed anytime with this function */
             //document.getElementById("data").innerHTML = "Now I am connected with netpie...<br/>";
-            insertNotification('Browser is now connected with Netpie Cloud', moment().format('hh:mm:ss a'), 'connected');
+            insertNotification('Browser is now connected with Netpie Cloud', moment().format('HH:mm:ss'), 'connected');
             microgear.subscribe("/temp/#"); // Subscribe to temp topic
             /*
             setInterval(function() {
